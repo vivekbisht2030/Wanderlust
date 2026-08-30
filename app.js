@@ -8,7 +8,7 @@ const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const {listingSchema} = require("./schema.js");
+const {listingSchema, reviewSchema} = require("./schema.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -32,16 +32,29 @@ app.get("/", (req, res) => {
 });
 
 const validateListing = (req, res, next) => {
+
     let {error} = listingSchema.validate(req.body);
-
     if(error){
+
+
         let errorMsg = error.details.map((el) => el.message).join(",");
-
-
         throw new ExpressError(400, errorMsg);
     } else {
         next();
     }
+
+};
+
+const validateReviews = (req, res, next) => {
+    let {error} = reviewSchema.validate(req.body);
+    if(error){
+        let errorMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errorMsg);
+
+    } else {
+        next();
+    }
+
 };
 
 // index
@@ -51,11 +64,9 @@ app.get("/listings", wrapAsync(async (req, res) => {
 })
 );
 
-
 // new
 app.get("/listings/new", (req, res) => {
     res.render("listings/new.ejs");
-
 });
 
 // create
@@ -69,6 +80,7 @@ app.post("/listings", validateListing, wrapAsync(async (req, res, next) => {
 // show/read
 app.get("/listings/:id", wrapAsync(async(req, res) => {
     let {id} = req.params;
+
     const listing = await Listing.findById(id);
     res.render("listings/show.ejs", {listing});
 })
@@ -90,8 +102,6 @@ app.put("/listings/:id", validateListing, wrapAsync(async(req, res) => {
 })
 );
 
-
-
 // delete
 app.delete("/listings/:id", wrapAsync(async(req, res) => {
     let {id} = req.params;
@@ -102,7 +112,7 @@ app.delete("/listings/:id", wrapAsync(async(req, res) => {
 );
 
 // Review
-app.post("/listings/:id/reviews", async(req, res) => {
+app.post("/listings/:id/reviews", validateReviews, wrapAsync(async(req, res) => {
     let listing = await Listing.findById(req.params.id);
     let newReview = new Review(req.body.review);
 
@@ -113,7 +123,8 @@ app.post("/listings/:id/reviews", async(req, res) => {
 
     console.log("new review saved");
     res.redirect(`/listings/${listing._id}`);
-});
+})
+);
 
 app.all(/(.*)/, (req, res, next) => {
     next(new ExpressError(404, "Page not found"));
