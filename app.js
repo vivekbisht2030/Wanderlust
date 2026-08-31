@@ -81,7 +81,7 @@ app.post("/listings", validateListing, wrapAsync(async (req, res, next) => {
 app.get("/listings/:id", wrapAsync(async(req, res) => {
     let {id} = req.params;
 
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", {listing});
 })
 );
@@ -133,12 +133,14 @@ app.all(/(.*)/, (req, res, next) => {
 app.use((err, req, res, next) => {
     let {status=500, message="Wrong"} = err;
 
-    res.status(status).send(message);
+    // res.status(status).send(message);
     res.status(status).render("error.ejs", {message});
 
     
+    // console.log("ACTUAL ERROR:", err);
 });
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`); 
+    console.log(`listening on port ${port}`);
+
 });
