@@ -102,7 +102,7 @@ app.put("/listings/:id", validateListing, wrapAsync(async(req, res) => {
 })
 );
 
-// delete
+// delete (post)
 app.delete("/listings/:id", wrapAsync(async(req, res) => {
     let {id} = req.params;
     let deleteListing = await Listing.findByIdAndDelete(id);
@@ -126,21 +126,30 @@ app.post("/listings/:id/reviews", validateReviews, wrapAsync(async(req, res) => 
 })
 );
 
+// Delete (review)
+app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async(req, res) => {
+    let { id, reviewId } = req.params;
+    await Listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/listings/${id}`);
+
+})
+);
+
+
 app.all(/(.*)/, (req, res, next) => {
     next(new ExpressError(404, "Page not found"));
 });
 
 app.use((err, req, res, next) => {
-    let {status=500, message="Wrong"} = err;
 
+    let {status=500, message="Wrong"} = err;
     // res.status(status).send(message);
     res.status(status).render("error.ejs", {message});
-
-    
     // console.log("ACTUAL ERROR:", err);
 });
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`);
 
+    console.log(`listening on port ${port}`);
 });
