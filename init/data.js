@@ -50,6 +50,7 @@ const sampleListings = [
     },
     price: 800,
     location: "Portland",
+
     country: "United States",
   },
   {
@@ -79,8 +80,8 @@ const sampleListings = [
   {
     title: "Luxury Penthouse with City Views",
     description:
-      "Indulge in luxury living with panoramic city views from this stunning penthouse apartment.",
 
+      "Indulge in luxury living with panoramic city views from this stunning penthouse apartment.",
     image: {
       filename: "listingimage",
       url: "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
@@ -89,8 +90,8 @@ const sampleListings = [
     location: "Los Angeles",
     country: "United States",
   },
-  {
 
+  {
     title: "Ski-In/Ski-Out Chalet",
     description:
       "Hit the slopes right from your doorstep in this ski-in/ski-out chalet in the Swiss Alps.",
@@ -123,8 +124,6 @@ const sampleListings = [
 
       url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtcGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
     },
-
-
     price: 1800,
     location: "Amsterdam",
     country: "Netherlands",
@@ -132,26 +131,26 @@ const sampleListings = [
   {
     title: "Private Island Retreat",
     description:
-
       "Have an entire island to yourself for a truly exclusive and unforgettable vacation experience.",
-    image: {
-
-      
+    
+      image: {      
       filename: "listingimage",
+
+
       url: "https://images.unsplash.com/photo-1618140052121-39fc6db33972?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
     },
     price: 10000,
     location: "Fiji",
-
     country: "Fiji",
+
   },
   {
     title: "Charming Cottage in the Cotswolds",
     description:
       "Escape to the picturesque Cotswolds in this quaint and charming cottage with a thatched roof.",
     image: {
-
       filename: "listingimage",
+      
       url: "https://images.unsplash.com/photo-1602088113235-229c19758e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmVhY2glMjB2YWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
     },
     price: 1200,
@@ -180,8 +179,8 @@ const sampleListings = [
     },
     price: 1800,
     location: "Bali",
-
     country: "Indonesia",
+
   },
   {
     title: "Mountain View Cabin in Banff",
@@ -190,8 +189,8 @@ const sampleListings = [
     image: {
       filename: "listingimage",
       url: "https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxvZGdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-    
     },
+
     price: 1500,
     location: "Banff",
     country: "Canada",
@@ -222,7 +221,6 @@ const sampleListings = [
   },
   {
     title: "Historic Castle in Scotland",
-
     description:
       "Live like royalty in this historic castle in the Scottish Highlands. Explore the rugged beauty of the area.",
       image: {
@@ -232,27 +230,27 @@ const sampleListings = [
     price: 4000,
     location: "Scottish Highlands",
     country: "United Kingdom",
-
   },
   {
 
-
     title: "Desert Oasis in Dubai",
     description:
+
+
       "Experience luxury in the middle of the desert in this opulent oasis in Dubai with a private pool.",
       image: {
       filename: "listingimage",
-
       url: "https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHViYWl8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
     },
+
     price: 5000,
     location: "Dubai",
     country: "United Arab Emirates",
   },
   {
-
     title: "Rustic Log Cabin in Montana",
     description:
+
       "Unplug and unwind in this cozy log cabin surrounded by the natural beauty of Montana.",
     image: {
       filename: "listingimage",
@@ -280,9 +278,9 @@ const sampleListings = [
       "Stay in an eco-friendly treehouse nestled in the forest. It's the perfect escape for nature lovers.",
     image: {
       filename: "listingimage",
-
       url: "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
     },
+
     price: 750,
     location: "Costa Rica",
     country: "Costa Rica",
@@ -290,9 +288,9 @@ const sampleListings = [
   {
     title: "Historic Cottage in Charleston",
     description:
-
       "Experience the charm of historic Charleston in this beautifully restored cottage with a private garden.",
     image: {
+
       filename: "listingimage",
       url: "https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxvZGdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
     },
@@ -323,7 +321,6 @@ const sampleListings = [
     price: 1200,
     location: "New Hampshire",
     country: "United States",
-
   },
   {
     title: "Luxury Villa in the Maldives",
@@ -332,28 +329,28 @@ const sampleListings = [
     image: {
       filename: "listingimage",
       url: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-    
     },
     price: 6000,
-
-
     location: "Maldives",
+
     country: "Maldives",
   },
+
+
   {
     title: "Ski Chalet in Aspen",
-
     description:
       "Hit the slopes in style with this luxurious ski chalet in the world-famous Aspen ski resort.",
     image: {
+
       filename: "listingimage",
       url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxha2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
     },
     price: 4000,
-    
     location: "Aspen",
     country: "United States",
   },
+  
   {
     title: "Secluded Beach House in Costa Rica",
     description:

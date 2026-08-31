@@ -29,23 +29,24 @@
         <input type="number" name="listing[price]" class="form-control" value="<%= listing.price %>" required>
         <div class="invalid-feedback">Please enter a valid price</div>
         </div>
-
         <div class="mb-3 col-md-8">
         <label for="country" class="form-label">Country</label>
         <input type="text" name="listing[country]" class="form-control" value="<%= listing.country %>" required>
+
         <div class="invalid-feedback">Please enter a valid country name</div>
         </div>
-        </div>
 
+
+        </div>
         <div class="mb-3">
         <label for="location" class="form-label">Location</label>
         <input type="text" name="listing[location]" class="form-control" value="<%= listing.location %>" required>
         <div class="invalid-feedback">Please enter location</div>
+
         </div>
         <br>
         <button class="btn btn-dark edit-btn">Edit</button>
         <br> <br>
-        
     </form>
         </div>
     </div>
