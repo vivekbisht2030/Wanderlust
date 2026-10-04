@@ -32,8 +32,11 @@ async function main() {
 const sessionOption = {
     secret: "mysupersecretpolu",
     resave: false,
+
     saveUninitialized: true,
     cookie: {
+
+
         expires: Date.now() + 7 * 24 * 60 * 60 *1000,
         maxAge: 7 * 24 * 60 * 60 *1000,
         httpOnly: true
@@ -47,10 +50,11 @@ app.get("/", (req, res) => {
 app.use(session(sessionOption));
 app.use(flash());
 
+
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
+    console.log(res.locals.success);
     next();
-
 });
 
 app.use("/listings", listings); // listing.js (routes)
