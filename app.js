@@ -5,6 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
 const ExpressError = require("./utils/ExpressError.js");
+const session = require("express-session");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -16,9 +17,26 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine('ejs', ejsMate);
 
+const sessionOption = {
+    secret: "mysupersecretpolu",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 *1000,
+        maxAge: 7 * 24 * 60 * 60 *1000,
+        httpOnly: true
+    }
+};
+app.use(session(sessionOption));
+
 const mongoose = require('mongoose');
+const cookie = require("express-session/session/cookie.js");
+
+
 main()
     .then(() => {
+
+
         console.log("connection");
     }) .catch(err => console.log(err));
 async function main() {
@@ -35,14 +53,11 @@ app.use("/listings/:id/reviews", reviews); // review.js (routes)
 
 app.all(/(.*)/, (req, res, next) => {
     next(new ExpressError(404, "Page not found"));
-
-
 });
 
 app.use((err, req, res, next) => {
     let {status=500, message="Wrong"} = err;
     // res.status(status).send(message);
-
     res.status(status).render("error.ejs", {message});
     // console.log("ACTUAL ERROR:", err);
 });
