@@ -11,8 +11,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -35,7 +36,6 @@ async function main() {
 
 const sessionOption = {
     secret: "mysupersecretpolu",
-
 
     resave: false,
     saveUninitialized: true,
@@ -69,18 +69,31 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/listings", listings); // listing.js (routes)
-app.use("/listings/:id/reviews", reviews); // review.js (routes)
+app.get("/demouser", async (req, res) => {
+    let fakeUser = new User({
+        email: "polu@gmail.com",
+        username: "PoluOlu"
+    });
 
+    let registeredUser = await User.register(fakeUser, "Polu@Olu");
+    res.send(registeredUser);
+});
+
+
+
+app.use("/listings", listingRouter); // listing.js (routes)
+app.use("/listings/:id/reviews", reviewRouter); // review.js (routes)
+app.use("/", userRouter); // user.js (routes)
 
 app.all(/(.*)/, (req, res, next) => {
     next(new ExpressError(404, "Page not found"));
 });
 
+
+
 app.use((err, req, res, next) => {
     let {status=500, message="Wrong"} = err;
     // res.status(status).send(message);
-    
     res.status(status).render("error.ejs", {message});
     // console.log("ACTUAL ERROR:", err);
 });
