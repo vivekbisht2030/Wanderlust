@@ -33,9 +33,9 @@ async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
 }
 
-
 const sessionOption = {
     secret: "mysupersecretpolu",
+
 
     resave: false,
     saveUninitialized: true,
@@ -69,15 +69,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/demouser", async (req, res) => {
-    let fakeUser = new User({
-        email: "polu@gmail.com",
-        username: "PoluOlu"
-    });
+// app.get("/demouser", async (req, res) => {
+//     let fakeUser = new User({
+//         email: "polu@gmail.com",
+//         username: "PoluOlu"
+//     });
 
-    let registeredUser = await User.register(fakeUser, "Polu@Olu");
-    res.send(registeredUser);
-});
+//     let registeredUser = await User.register(fakeUser, "Polu@Olu");
+//     res.send(registeredUser);
+// });
 
 
 
@@ -95,7 +95,7 @@ app.use((err, req, res, next) => {
     let {status=500, message="Wrong"} = err;
     // res.status(status).send(message);
     res.status(status).render("error.ejs", {message});
-    // console.log("ACTUAL ERROR:", err);
+    console.log("ACTUAL ERROR:", err);
 });
 
 app.listen(port, () => {
