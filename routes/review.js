@@ -4,17 +4,7 @@ const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
-const {reviewSchema} = require("../schema.js");
-
-const validateReviews = (req, res, next) => {
-    let {error} = reviewSchema.validate(req.body);
-    if(error){
-        let errorMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errorMsg);
-    } else {
-        next();
-    }
-};
+const {validateReviews} = require("../middleware.js");
 
 // "/" or "/new" in every route here, /listings/:id/reviews was there
 
@@ -31,18 +21,13 @@ router.post("/", validateReviews, wrapAsync(async(req, res) => {
 })
 );
 
-
-
 // Delete (review)
 router.delete("/:reviewId", wrapAsync(async(req, res) => {
-
-
     let { id, reviewId } = req.params;
     await Listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
     await Review.findByIdAndDelete(reviewId);
     req.flash("success", "review deleted");
     res.redirect(`/listings/${id}`);
-    
 })
 );
 
