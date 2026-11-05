@@ -71,6 +71,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user;
+    res.locals.mapToken = process.env.MAP_TOKEN;
     // console.log(res.locals.success);
     // console.log(res.locals.error);
     // console.log(res.locals.currUser);
@@ -79,8 +80,8 @@ app.use((req, res, next) => {
 
 // app.get("/demouser", async (req, res) => {
 //     let fakeUser = new User({
-//         email: "polu@gmail.com",
 
+//         email: "polu@gmail.com",
 //         username: "PoluOlu"
 //     });
 //     let registeredUser = await User.register(fakeUser, "Polu@Olu");
@@ -89,8 +90,8 @@ app.use((req, res, next) => {
 
 app.use("/listings", listingRouter); // listing.js (routes)
 app.use("/listings/:id/reviews", reviewRouter); // review.js (routes)
-app.use("/", userRouter); // user.js (routes)
 
+app.use("/", userRouter); // user.js (routes)
 app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "favicon.png"));
 });
