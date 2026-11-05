@@ -30,20 +30,20 @@ module.exports.createListing = async (req, res, next) => {
     })
     .send()
 
-    console.log(response.body.features[0].geometry);
-    res.send("Completed");
-
     let url = req.file.path;
     let filename = req.file.filename;
 
-
     console.log(url, "..", filename);
     const newListing = new Listing(req.body.listing);
+
+
     console.log(req.user);
     newListing.owner = req.user._id;
     newListing.image = {url, filename};
-    
-    await newListing.save();
+    newListing.geometry = response.body.features[0].geometry;
+    let savedListing = await newListing.save();
+
+    console.log(savedListing);
     req.flash("success", "New listing created");
     res.redirect("/listings");
 };
@@ -71,7 +71,6 @@ module.exports.updateListing = async(req, res) => {
         listing.image = {url, filename};
         await listing.save();
     }
-
     req.flash("success", "listing updated");
     res.redirect(`/listings/${id}`);
 };
@@ -80,7 +79,7 @@ module.exports.destroyListing = async(req, res) => {
     let {id} = req.params;
     let deleteListing = await Listing.findByIdAndDelete(id);
     console.log(deleteListing);
-    
     req.flash("success", "listing deleted");
+    
     res.redirect("/listings");
 };
