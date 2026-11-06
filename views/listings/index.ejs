@@ -5,11 +5,12 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
         }
         .filter {
             text-align: center;
-            margin-right: 2rem;
-            margin-top: 2rem;
             opacity: 0.7;
         }
         .filter:hover {
@@ -22,23 +23,26 @@
 
         .tax-info {
             display: none;
+            font-size: 12px;
         }
-
         .tax-toggle {
-            border: 1px solid black;
+            border: 1.5px solid black;
             border-radius: 1rem;
             height: 3rem;
             padding: 1rem;
-            margin-left: 3rem;
             display: flex;
             align-items: center;
+
+            margin-top: -1.2rem;
+            font-weight: 400;
+
 
         }
     </style>
 
-
      <div id="filters" >
         <div class="filter">
+
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Trending</p>
         </div>
@@ -46,11 +50,11 @@
         <div class="filter">
             <div><i class="fa-solid fa-bed"></i></div>
             <p>Rooms</p>
+
         </div>
 
         <div class="filter">
             <div><i class="fa-solid fa-mountain-city"></i></div>
-
             <p>Iconic cities</p>
         </div>
 
@@ -76,20 +80,20 @@
 
         <div class="filter">
             <div><i class="fa-solid fa-cow"></i></div>
+            
             <p>Farms</p>
         </div>
 
         <div class="filter">
-
             <div><i class="fa-solid fa-snowman"></i></div>
             <p>Arctic</p>
         </div>
 
         <div class="filter">
+
             <div><i class="fa-solid fa-landmark-dome"></i></div>
             <p>Domes</p>
         </div>
-
 
         <div class="filter">
             <div><i class="fa-solid fa-ship"></i></div>
@@ -107,35 +111,34 @@
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
     <%for (let i=0; i < allListing.length; i++) { %>
         <a href="/listings/<%= allListing[i]._id %>" class="listing-link">
-    <div class="card col listing-card">
-  <img src="<%= allListing[i].image.url %>" class="card-img-top" alt="listing_image" style = "height: 20rem">
-  <div class="card-img-overlay"></div>
-  <div class="card-body">
-    <p class="card-text">
-        <b><%= allListing[i].title %></b> <br>
-        &#8377; <%= allListing[i].price.toLocaleString("en-IN") %> / night
-        <i class="tax-info"> &nbsp; &nbsp +18% GST</i>
-    </p>
-  </div>
+            <div class="card col listing-card">
+                <img src="<%= allListing[i].image.url %>" class="card-img-top" alt="listing_image" style = "height: 20rem">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= allListing[i].title %></b> <br>
+                        &#8377; <%= allListing[i].price.toLocaleString("en-IN") %> / night
+                        <i class="tax-info"> &nbsp; &nbsp +18% GST</i>
+                    </p>
+                </div>
+            </div>
+        </a>
+    <%}%>
 </div>
-</a>
-<%}%>
-</div>
-
 
 <script>
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
         taxSwitch.addEventListener("click", () => {
-    let taxInfo = document.getElementsByClassName("tax-info");
-    for (let i = 0; i < taxInfo.length; i++) {
-        if (taxSwitch.checked) {
-            taxInfo[i].style.display = "inline";
-        } else {
-            taxInfo[i].style.display = "none";
+            let taxInfo = document.getElementsByClassName("tax-info");
+            for (let i = 0; i < taxInfo.length; i++) {
+                if (taxSwitch.checked) {
 
-        }
-    }
+                    taxInfo[i].style.display = "inline";
+                } else {
 
-    
-});
+                    
+                    taxInfo[i].style.display = "none";
+                }
+            }
+        });
 </script>
