@@ -62,16 +62,52 @@ module.exports.renderEditForm = async (req, res) => {
     res.render("listings/edit.ejs", {listing, originalImageUrl});
 };
 
-module.exports.updateListing = async(req, res) => {
-    let {id} = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});    
-    if (typeof req.file != "undefined") {
-        let url = req.file.path;
-        let filename = req.file.filename;
-        listing.image = {url, filename};
-        await listing.save();
+// module.exports.updateListing = async(req, res) => {
+//     let {id} = req.params;
+//     let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});    
+//     if (typeof req.file != "undefined") {
+//         let url = req.file.path;
+//         let filename = req.file.filename;
+//         listing.image = {url, filename};
+//         await listing.save();
+//     }
+//     req.flash("success", "listing updated");
+//     res.redirect(`/listings/${id}`);
+// };
+
+module.exports.updateListing = async (req, res) => {
+    let { id } = req.params;
+    let listing = await Listing.findById(id);
+    if (!listing) {
+        req.flash("error", "Listing does not exist");
+
+        return res.redirect("/listings");
     }
-    req.flash("success", "listing updated");
+    Object.assign(listing, req.body.listing);
+
+    // Update coordinates if location or country changes
+    const response = await geocodingClient.forwardGeocode({
+        query: `${listing.location}, ${listing.country}`,
+        limit: 1
+    }).send();
+
+    if (response.body.features.length > 0) {
+        listing.geometry = response.body.features[0].geometry;
+    } else {
+        req.flash("error", "Could not find the updated location");
+        return res.redirect(`/listings/${id}/edit`);
+    }
+
+    // Update image only if a new image is uploaded
+    if (req.file) {
+        listing.image = {
+            url: req.file.path,
+            filename: req.file.filename
+        };
+    }
+    await listing.save();
+
+    req.flash("success", "Listing updated");
     res.redirect(`/listings/${id}`);
 };
 
