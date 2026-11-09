@@ -23,17 +23,14 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 //     res.render("listings/new.ejs");
 // };
 module.exports.index = async (req, res) => {
-    const { search, category } = req.query;
+    const { search, category, maxPrice } = req.query;
 
     let filter = {};
-
-    // Search by listing title, location or country
     if (search && search.trim() !== "") {
         const searchRegex = new RegExp(
             search.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
             "i"
         );
-
         filter.$or = [
             { title: searchRegex },
             { location: searchRegex },
@@ -41,9 +38,12 @@ module.exports.index = async (req, res) => {
         ];
     }
 
-    // Category filtering
     if (category) {
         filter.category = category;
+    }
+
+    if (maxPrice) {
+        filter.price = { $lte: Number(maxPrice) };
     }
 
     const allListing = await Listing.find(filter);
@@ -51,9 +51,11 @@ module.exports.index = async (req, res) => {
     res.render("listings/index.ejs", {
         allListing,
         search,
-        category
+        category,
+        maxPrice
     });
 };
+
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
 };

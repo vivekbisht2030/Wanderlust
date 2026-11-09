@@ -37,6 +37,35 @@
     color: #000;
     background-color: transparent;
 }
+#priceFilter {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    z-index: 1050;
+}
+#closePriceFilter {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#closePriceFilter:hover {
+    color: #000;
+}
+#priceFilter {
+    position: absolute;
+}
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -74,11 +103,56 @@
 
 <form class="d-flex align-items-center" role="search" action="/listings" method="GET">
 
-    <% if (typeof search !== 'undefined' && search) { %>
+    <!-- <% if (typeof search !== 'undefined' && search) { %>
         <button type="button" class="btn me-2" id="filterBtn">
             <i class="fa-solid fa-sliders"></i>
         </button>
-    <% } %>
+    <% } %> -->
+    <% if (typeof search !== 'undefined' && search) { %>
+    <div class="position-relative me-2">
+
+        <button type="button" class="btn" id="filterBtn">
+            <i class="fa-solid fa-sliders"></i>
+        </button>
+
+        <div id="priceFilter" class="d-none">
+<button type="button" id="closePriceFilter">
+    <i class="fa-solid fa-xmark"></i>
+</button>
+            <h5>Price per night</h5>
+
+            <div class="d-flex justify-content-between mt-3">
+                <span>₹1,000</span>
+                <span>₹15,000</span>
+            </div>
+
+            <h3 id="priceValue">
+    ₹<%= Number(maxPrice || 15000).toLocaleString("en-IN") %>
+</h3>
+
+            <input
+    type="range"
+    id="maxPrice"
+    name="maxPrice"
+    min="1000"
+    max="15000"
+    step="100"
+    value="<%= maxPrice || 15000 %>"
+>
+
+            <hr>
+
+            <button type="submit" class="btn search-btn w-100">
+                Apply filter
+            </button>
+
+            <p class="text-center mt-3" id="priceDescription">
+    Showing listings priced at or below ₹<%= Number(maxPrice || 15000).toLocaleString("en-IN") %> per night
+</p>
+
+        </div>
+    </div>
+<% } %>
 
     <input
         class="form-control me-2 search-inp"
@@ -110,3 +184,31 @@
         </div>
     </div>
 </nav>
+
+<script>
+    const filterBtn = document.getElementById("filterBtn");
+    const priceFilter = document.getElementById("priceFilter");
+    const maxPrice = document.getElementById("maxPrice");
+    const priceValue = document.getElementById("priceValue");
+    const priceDescription = document.getElementById("priceDescription");
+
+    if (filterBtn && priceFilter) {
+        filterBtn.addEventListener("click", () => {
+            priceFilter.classList.toggle("d-none");
+        });
+    }
+
+    if (maxPrice) {
+        maxPrice.addEventListener("input", () => {
+            const price = Number(maxPrice.value).toLocaleString("en-IN");
+
+            priceValue.textContent = `₹${price}`;
+
+            priceDescription.textContent =
+                `Showing listings priced at or below ₹${price} per night`;
+        });
+    }
+    document.getElementById("closePriceFilter").addEventListener("click", () => {
+    document.getElementById("priceFilter").classList.add("d-none");
+});
+</script>

@@ -49,35 +49,35 @@
 
      <div id="filters" >
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Trending" class="filter <%= category === 'Trending' ? 'active' : '' %>" class="filter">
+           <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Trending" class="filter <%= category === 'Trending' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Trending</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Rooms" class="filter <%= category === 'Rooms' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Rooms" class="filter">
             <div><i class="fa-solid fa-bed"></i></div>
             <p>Rooms</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Iconic%20Cities" class="filter <%= category === 'Iconic Cities' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Iconic%20Cities" class="filter">
             <div><i class="fa-solid fa-mountain-city"></i></div>
             <p>Iconic cities</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Mountains" class="filter <%= category === 'Mountains' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Mountains" class="filter">
             <div><i class="fa-solid fa-mountain"></i></div>
             <p>Mountains</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Castles" class="filter <%= category === 'Castles' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Castles" class="filter">
             <div><i class="fa-brands fa-fort-awesome"></i></div>
             <p>Castles</p>
             </a>
@@ -86,7 +86,7 @@
 
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Amazing%20Pools" class="filter <%= category === 'Amazing Pools' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Amazing%20Pools" class="filter">
             <div><i class="fa-solid fa-person-swimming"></i></div>
             <p>Amazing Pools</p>
             </a>
@@ -96,35 +96,35 @@
 
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Camping" class="filter <%= category === 'Camping' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Camping" class="filter">
             <div><i class="fa-solid fa-tents"></i></div>
             <p>Camping</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Farms" class="filter <%= category === 'Farms' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Farms" class="filter">
             <div><i class="fa-solid fa-cow"></i></div>
             <p>Farms</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Arctic" class="filter <%= category === 'Arctic' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Arctic" class="filter">
             <div><i class="fa-solid fa-snowman"></i></div>
             <p>Arctic</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Domes" class="filter <%= category === 'Domes' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Domes" class="filter">
             <div><i class="fa-solid fa-landmark-dome"></i></div>
             <p>Domes</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Boats" class="filter <%= category === 'Boats' ? 'active' : '' %>" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&maxPrice=<%= maxPrice || '' %>&category=Boats" class="filter">
             <div><i class="fa-solid fa-ship"></i></div>
             <p>Boats</p>
             </a>
