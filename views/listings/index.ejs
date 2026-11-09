@@ -24,6 +24,10 @@
             color: inherit;
             text-decoration: none;
         }
+        .filter.active {
+    opacity: 1;
+    color: #000;
+}
         .tax-info {
             display: none;
             font-size: 12px;
@@ -45,35 +49,35 @@
 
      <div id="filters" >
         <div class="filter">
-            <a href="/listings?category=Trending" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Trending" class="filter <%= category === 'Trending' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Trending</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Rooms" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Rooms" class="filter <%= category === 'Rooms' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-bed"></i></div>
             <p>Rooms</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Iconic%20Cities" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Iconic%20Cities" class="filter <%= category === 'Iconic Cities' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-mountain-city"></i></div>
             <p>Iconic cities</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Mountains" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Mountains" class="filter <%= category === 'Mountains' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-mountain"></i></div>
             <p>Mountains</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Castles" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Castles" class="filter <%= category === 'Castles' ? 'active' : '' %>" class="filter">
             <div><i class="fa-brands fa-fort-awesome"></i></div>
             <p>Castles</p>
             </a>
@@ -82,7 +86,7 @@
 
 
         <div class="filter">
-            <a href="/listings?category=Amazing%20Pools" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Amazing%20Pools" class="filter <%= category === 'Amazing Pools' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-person-swimming"></i></div>
             <p>Amazing Pools</p>
             </a>
@@ -92,35 +96,35 @@
 
 
         <div class="filter">
-            <a href="/listings?category=Camping" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Camping" class="filter <%= category === 'Camping' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-tents"></i></div>
             <p>Camping</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Farms" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Farms" class="filter <%= category === 'Farms' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-cow"></i></div>
             <p>Farms</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Arctic" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Arctic" class="filter <%= category === 'Arctic' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-snowman"></i></div>
             <p>Arctic</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Domes" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Domes" class="filter <%= category === 'Domes' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-landmark-dome"></i></div>
             <p>Domes</p>
             </a>
         </div>
 
         <div class="filter">
-            <a href="/listings?category=Boats" class="filter">
+            <a href="/listings?search=<%= encodeURIComponent(typeof search !== 'undefined' ? search : '') %>&category=Boats" class="filter <%= category === 'Boats' ? 'active' : '' %>" class="filter">
             <div><i class="fa-solid fa-ship"></i></div>
             <p>Boats</p>
             </a>
