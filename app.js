@@ -96,6 +96,14 @@ app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "favicon.png"));
 });
 
+app.get("/privacy", (req, res) => {
+    res.render("legal/privacy.ejs", { hideNavbar: true });
+});
+
+app.get("/terms", (req, res) => {
+    res.render("legal/terms.ejs", { hideNavbar: true });
+});
+
 app.all(/(.*)/, (req, res, next) => {
     console.log("404 URL:", req.method, req.originalUrl);
     next(new ExpressError(404, "Page not found"));

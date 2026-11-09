@@ -19,7 +19,9 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.33.0/mapbox-gl.js"></script>
 </head>
 <body>
+    <% if (typeof hideNavbar === "undefined" || !hideNavbar) { %>
     <%- include("../includes/navbar.ejs") %>
+<% } %>
         <div class="container">
             <%- include("../includes/flash.ejs") %>
             <%- body %>
