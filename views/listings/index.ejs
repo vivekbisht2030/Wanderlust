@@ -25,23 +25,24 @@
             text-decoration: none;
         }
         .filter.active {
-    opacity: 1;
-    color: #000;
-}
+            opacity: 1;
+            color: #000;
+        }
         .tax-info {
             display: none;
             font-size: 12px;
         }
+
         .tax-toggle {
             border: 1.5px solid black;
+            
+            
             border-radius: 1rem;
-            height: 3rem;
-            
+            height: 3rem;    
             padding: 1rem;
-            display: flex;
-            
-            
+            display: flex;       
             align-items: center;
+
             margin-top: -1.2rem;
             font-weight: 400;
         }
@@ -49,7 +50,8 @@
 
      <div id="filters" >
         <div class="filter <%= category === 'Trending' ? 'active' : '' %>">
-           <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Trending">
+           
+            <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Trending">
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Trending</p>
             </a>
@@ -78,22 +80,19 @@
 
         <div class="filter <%= category === 'Castles' ? 'active' : '' %>">
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Castles">
-            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            
+                <div><i class="fa-brands fa-fort-awesome"></i></div>
             <p>Castles</p>
             </a>
         </div>
-
-
 
         <div class="filter <%= category === 'Amazing Pools' ? 'active' : '' %>">
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Amazing%20Pools">
             <div><i class="fa-solid fa-person-swimming"></i></div>
             <p>Amazing Pools</p>
-            </a>
+            
+        </a>
         </div>
-
-
-
 
         <div class="filter <%= category === 'Camping' ? 'active' : '' %>">
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Camping">
@@ -133,28 +132,28 @@
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                
                 <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
             </div>
+        
+        
         </div>
-
     </div>
-
-
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
     <%for (let i=0; i < allListing.length; i++) { %>
+        
         <a href="/listings/<%= allListing[i]._id %>" class="listing-link">
             <div class="card col listing-card">
                 <img src="<%= allListing[i].image.url %>" class="card-img-top" alt="listing_image" style = "height: 20rem">
-                
                 <div class="card-img-overlay"></div>
                 <div class="card-body">
                     <p class="card-text">
                         <b><%= allListing[i].title %></b> <br>
+
                         &#8377; <%= allListing[i].price.toLocaleString("en-IN") %> / night
                         <i class="tax-info"> &nbsp; &nbsp +18% GST</i>
                     </p>
-                
                 </div>
             </div>
         </a>
@@ -181,4 +180,5 @@
                 }
             }
         });
+        
 </script>

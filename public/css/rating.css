@@ -180,6 +180,7 @@
     position: static;
     margin-right: 0;
     opacity: 1;
+
   }
   .starability-slot .input-no-rate {
     display: none;
@@ -189,8 +190,8 @@
     display: inline;
     float: none;
     width: auto;
+
     height: auto;
-    
     font-size: 1em;
     color: inherit;
     background: none;

@@ -32,19 +32,24 @@ module.exports.index = async (req, res) => {
             "i"
         );
         filter.$or = [
+
             { title: searchRegex },
             { location: searchRegex },
+
+
             { country: searchRegex }
         ];
     }
 
     if (category) {
+
         filter.category = category;
     }
 
     if (maxPrice) {
         filter.price = { $lte: Number(maxPrice) };
     }
+
 
     const allListing = await Listing.find(filter);
 
@@ -75,16 +80,17 @@ module.exports.showListing = async(req, res) => {
 
 
 
+
 module.exports.createListing = async (req, res, next) => {
     let response = await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
         limit: 1
     })
-
     .send()
 
     let url = req.file.path;
     let filename = req.file.filename;
+
     console.log(url, "..", filename);
     const newListing = new Listing(req.body.listing);
     console.log(req.user);
@@ -126,12 +132,16 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateListing = async (req, res) => {
     let { id } = req.params;
     let listing = await Listing.findById(id);
+
     if (!listing) {
         req.flash("error", "Listing does not exist");
-
+        
+        
         return res.redirect("/listings");
     }
     Object.assign(listing, req.body.listing);
+
+
 
     // Update coordinates if location or country changes
     const response = await geocodingClient.forwardGeocode({
@@ -139,6 +149,8 @@ module.exports.updateListing = async (req, res) => {
         limit: 1
     }).send();
 
+
+    
     if (response.body.features.length > 0) {
         listing.geometry = response.body.features[0].geometry;
     } else {
