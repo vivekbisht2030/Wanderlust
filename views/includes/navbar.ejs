@@ -4,6 +4,7 @@
         color: #fff;
         border-radius: 25px;
         padding: 0 1rem 0 1rem;
+        height: 40px;
     }
     .search-btn:hover {
         background-color: #fe424d;
@@ -17,6 +18,25 @@
         border-radius: 25px;
         padding: 0.5rem 1.5rem 0.5rem 3rem ;
     }
+    #filterBtn:focus,
+#filterBtn:active,
+#filterBtn:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+#filterBtn {
+    color: #999;
+    background-color: transparent;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#filterBtn:hover {
+    color: #000;
+    background-color: transparent;
+}
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -31,13 +51,48 @@
             </div>
 
             <div class="navbar-nav ms-auto">
-                <form class="d-flex" role="search">
+                <!-- <form class="d-flex" role="search">
                     
                     <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations"/>
                     <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                 
                 
-                </form>
+                </form> -->
+
+                <!-- <form class="d-flex" role="search" action="/listings" method="GET">
+    <input
+        class="form-control me-2 search-inp"
+        type="search"
+        name="search"
+        placeholder="Search destinations"
+        value="<%= typeof search !== 'undefined' ? search : '' %>"
+    />
+    <button class="btn search-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>Search
+    </button>
+</form> -->
+
+<form class="d-flex align-items-center" role="search" action="/listings" method="GET">
+
+    <% if (typeof search !== 'undefined' && search) { %>
+        <button type="button" class="btn me-2" id="filterBtn">
+            <i class="fa-solid fa-sliders"></i>
+        </button>
+    <% } %>
+
+    <input
+        class="form-control me-2 search-inp"
+        type="search"
+        name="search"
+        placeholder="Search destinations"
+        value="<%= typeof search !== 'undefined' ? search : '' %>"
+    />
+
+    <button class="btn search-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>Search
+    </button>
+
+</form>
             </div>
 
             <div class="navbar-nav ms-auto">

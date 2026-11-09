@@ -8,20 +8,56 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 //     res.render("listings/index.ejs", {allListing});
 // };
 
-module.exports.index = async (req, res) => {
-    const { category } = req.query;
-    let allListing;
-    if (category) {
-        allListing = await Listing.find({ category: category });
-    } else {
-        allListing = await Listing.find({});
-    }
-    res.render("listings/index.ejs", { allListing });
-};
+// module.exports.index = async (req, res) => {
+//     const { category } = req.query;
+//     let allListing;
+//     if (category) {
+//         allListing = await Listing.find({ category: category });
+//     } else {
+//         allListing = await Listing.find({});
+//     }
+//     res.render("listings/index.ejs", { allListing });
+// };
 
+// module.exports.renderNewForm = (req, res) => {
+//     res.render("listings/new.ejs");
+// };
+module.exports.index = async (req, res) => {
+    const { search, category } = req.query;
+
+    let filter = {};
+
+    // Search by listing title, location or country
+    if (search && search.trim() !== "") {
+        const searchRegex = new RegExp(
+            search.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+            "i"
+        );
+
+        filter.$or = [
+            { title: searchRegex },
+            { location: searchRegex },
+            { country: searchRegex }
+        ];
+    }
+
+    // Category filtering
+    if (category) {
+        filter.category = category;
+    }
+
+    const allListing = await Listing.find(filter);
+
+    res.render("listings/index.ejs", {
+        allListing,
+        search,
+        category
+    });
+};
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
 };
+
 
 module.exports.showListing = async(req, res) => {
     let {id} = req.params;
