@@ -2,6 +2,7 @@ const Listing = require("./models/listing");
 const Review = require("./models/review");
 const ExpressError = require("./utils/ExpressError.js");
 const {listingSchema, reviewSchema} = require("./schema.js");
+const Booking = require("./models/booking");
 
 module.exports.isLoggedIn = (req, res, next) => {
     // console.log(req.path, "..", req.originalUrl);
@@ -63,3 +64,25 @@ module.exports.isReviewAuthor = async(req, res, next) => {
     }
     next();
 }
+
+module.exports.isBookingAuthor = async (req, res, next) => {
+    const { bookingId } = req.params;
+
+    const booking = await Booking.findById(bookingId);
+
+    if (!booking) {
+        req.flash("error", "Booking not found");
+        return res.redirect("/listings");
+    }
+
+    if (
+    !booking.user.equals(req.user._id) ||
+    !booking.listing.equals(req.params.id)
+) {
+        req.flash("error", "You can only manage your own bookings");
+        return res.redirect(`/listings/${req.params.id}`);
+    }
+
+    res.locals.booking = booking;
+    next();
+};

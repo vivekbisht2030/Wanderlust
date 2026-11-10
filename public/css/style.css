@@ -124,3 +124,20 @@ body {
     height: 300px;
     width: 80vh;
 }
+
+/* Booking button */
+a.book-now-btn {
+    display: inline-block;
+    background-color: #fe424d !important;
+    color: white !important;
+    border: none;
+    padding: 10px 30px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+a.book-now-btn:hover {
+    background-color: #e63946 !important;
+    color: white !important;
+}

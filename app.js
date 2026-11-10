@@ -18,6 +18,7 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const bookingRouter = require("./routes/booking.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -90,6 +91,7 @@ app.use((req, res, next) => {
 
 app.use("/listings", listingRouter); // listing.js (routes)
 app.use("/listings/:id/reviews", reviewRouter); // review.js (routes)
+app.use("/listings/:id/bookings", bookingRouter); // // booking.js (routes)
 
 app.use("/", userRouter); // user.js (routes)
 app.get("/favicon.ico", (req, res) => {

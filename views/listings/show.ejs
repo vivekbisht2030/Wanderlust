@@ -31,6 +31,46 @@
     </div>
     <% } %>
         
+
+
+<!-- Booking Buttons -->
+<% if (!currUser || !listing.owner._id.equals(currUser._id)) { %>
+    <div class="col-8 offset-3 mb-4 mt-3">
+
+        <% if (booking) { %>
+            <div class="d-flex gap-3">
+
+                <form
+                    action="/listings/<%= listing._id %>/bookings/<%= booking._id %>?_method=DELETE"
+                    method="POST"
+                >
+                    <button type="submit"
+                        class="btn"
+                        style="background-color: #fe424d; color: white;">
+                        Cancel Booking
+                    </button>
+                </form>
+
+                <a href="/listings/<%= listing._id %>/bookings/<%= booking._id %>/edit"
+                   class="btn"
+                   style="background-color: #555b63; color: white;">
+                    Edit Booking
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+            <a href="/listings/<%= listing._id %>/bookings/new"
+               class="btn book-now-btn">
+                Book Now
+            </a>
+
+        <% } %>
+
+    </div>
+<% } %>
+
     <div class="col-8 offset-3 mb-3">
 
         <% if(currUser) { %>
