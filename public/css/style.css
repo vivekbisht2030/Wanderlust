@@ -141,3 +141,239 @@ a.book-now-btn:hover {
     background-color: #e63946 !important;
     color: white !important;
 }
+
+
+/* ========================================= */
+/* TABLET AND MOBILE - LISTING CARDS */
+/* ========================================= */
+
+@media (max-width: 1199px) {
+
+    /* Display two listings in one row */
+    .row.row-cols-lg-3.row-cols-md-2.row-cols-sm-1 > .listing-link {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    /* Listing card */
+    .listing-card {
+        width: 100%;
+        margin-bottom: 1.2rem;
+    }
+
+    /* Listing image */
+    .listing-card .card-img-top {
+        width: 100%;
+        height: 145px !important;
+        object-fit: cover;
+        border-radius: 12px !important;
+    }
+
+    /* Listing text */
+    .listing-card .card-body {
+        padding: 0 !important;
+    }
+
+    .listing-card .card-title {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .listing-card .card-text {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+}
+
+/* heading of home page mobiile and tab */
+
+/* Mobile and Tablet Listings Heading */
+.mobile-listings-heading {
+    display: none;
+}
+
+@media (max-width: 1199px) {
+    .mobile-listings-heading {
+        display: block;
+        padding: 18px 8px 12px;
+    }
+
+    .mobile-listings-heading h2 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 5px;
+    }
+
+    .mobile-listings-heading p {
+        font-size: 12px;
+        color: #777;
+        margin: 0;
+    }
+}
+
+
+/* ========================================= */
+/* MOBILE AND TABLET STICKY FOOTER */
+/* ========================================= */
+
+.mobile-sticky-footer {
+    display: none;
+}
+
+@media (max-width: 1199px) {
+
+    .mobile-sticky-footer {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        background-color: #fff;
+        border-top: 1px solid #e5e5e5;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 1050;
+        padding: 5px 8px;
+    }
+
+    .mobile-sticky-footer a,
+    .mobile-sticky-footer button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        flex: 1;
+        background: none;
+        border: none;
+        color: #717171;
+        text-decoration: none;
+        font-family: inherit;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .mobile-sticky-footer i {
+        font-size: 20px;
+    }
+
+    .mobile-sticky-footer a:hover,
+    .mobile-sticky-footer button:hover {
+        color: #fe424d;
+    }
+
+    body {
+        padding-bottom: 70px;
+    }
+}
+
+
+/* MOBILE AND TABLET - IMPROVED FOOTER */
+@media (max-width: 1199px) {
+
+    .f-info {
+        height: auto;
+        min-height: 95px;
+        padding: 12px 5px;
+        gap: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .f-info-socials {
+        font-size: 16px;
+        margin: 0;
+        gap: 12px;
+    }
+
+    .f-info-socials i {
+        font-size: 16px;
+    }
+
+    .f-info-brand {
+        font-size: 13px;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .f-info-links {
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .f-info-links a {
+        font-size: 12px;
+    }
+}
+
+/* ===== CREATE LISTING - MOBILE/TABLET ONLY ===== */
+
+@media (max-width: 1199px) {
+    .row > .new-listing-form {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+    .new-listing-form h3 {
+        white-space: nowrap;
+        font-size: 23px;
+        margin-bottom: 22px;
+    }
+
+    .new-listing-form form {
+        width: 100%;
+    }
+
+    .new-listing-form form > .mb-3 {
+        width: 100%;
+    }
+
+    .new-listing-form .form-control,
+    .new-listing-form .form-select {
+        width: 100%;
+        min-height: 44px;
+        border-radius: 8px;
+        font-size: 15px;
+        padding: 9px 12px;
+    }
+
+    .new-listing-form textarea.form-control {
+        min-height: 100px;
+    }
+
+    /* Price and Country */
+    .new-listing-form form > .row {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .new-listing-form form > .row > .col-md-4 {
+        flex: 0 0 40%;
+        max-width: 40%;
+        padding: 0 5px;
+    }
+
+    .new-listing-form form > .row > .col-md-8 {
+        flex: 0 0 60%;
+        max-width: 60%;
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .new-listing-form h3 {
+        font-size: 22px;
+    }
+}

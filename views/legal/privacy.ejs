@@ -1,3 +1,5 @@
+<% layout("/layouts/boilerplate") %>
+
 <style>
     .legal-page {
         max-width: 1000px;
@@ -52,11 +54,69 @@
         }
 
     }
+
+    /* mobile and tab */
+    /* TABLET STYLING */
+@media (min-width: 577px) and (max-width: 1199px) {
+
+    .legal-page {
+        max-width: 90%;
+        margin: 30px auto;
+        padding: 35px 35px;
+    }
+
+    .legal-page h1 {
+        font-size: 2.2rem;
+    }
+
+    .legal-page h4 {
+        font-size: 1.25rem;
+    }
+
+    .legal-page p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
+
+/* MOBILE STYLING */
+@media (max-width: 576px) {
+
+    .legal-page {
+        width: auto;
+        margin: 18px 12px;
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .legal-page h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+    }
+
+    .legal-page .text-muted {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
+
+    .legal-page h4 {
+        font-size: 1.15rem;
+        margin-top: 22px;
+        margin-bottom: 8px;
+    }
+
+    .legal-page p {
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin-bottom: 10px;
+    }
+}
+
 </style>
 
 
 <div class="legal-page">
-<% layout("/layouts/boilerplate") %>
 
 <div class="container mt-5 mb-5">
     <h1 class="mb-4">Privacy Policy</h1>

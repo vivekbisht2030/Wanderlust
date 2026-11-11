@@ -48,6 +48,12 @@
         }
     </style>
 
+    <!-- Mobile and Tablet Listings Heading -->
+<div class="mobile-listings-heading">
+    <h2>Explore stays around the world</h2>
+    <p>Discover unique places and find your next getaway.</p>
+</div>
+
      <div id="filters" >
         <div class="filter <%= category === 'Trending' ? 'active' : '' %>">
            
@@ -181,4 +187,44 @@
             }
         });
         
+    // Mobile and Tablet Footer Tax Button
+    const mobileFooterTaxBtn = document.getElementById("mobileFooterTaxBtn");
+
+    if (mobileFooterTaxBtn) {
+        mobileFooterTaxBtn.addEventListener("click", () => {
+            const taxInfo = document.getElementsByClassName("tax-info");
+            const isVisible = taxInfo.length > 0 &&
+                taxInfo[0].style.display === "inline";
+
+            for (let i = 0; i < taxInfo.length; i++) {
+                taxInfo[i].style.display = isVisible ? "none" : "inline";
+            }
+
+            if (taxSwitch) {
+                taxSwitch.checked = !isVisible;
+            }
+
+            mobileFooterTaxBtn.classList.toggle("active", !isVisible);
+        });
+    }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const mobileFooterTaxBtn = document.getElementById("mobileFooterTaxBtn");
+
+    if (!mobileFooterTaxBtn) return;
+
+    mobileFooterTaxBtn.addEventListener("click", () => {
+        const taxInfo = document.getElementsByClassName("tax-info");
+
+        const isVisible = taxInfo.length > 0 &&
+            getComputedStyle(taxInfo[0]).display !== "none";
+
+        for (let i = 0; i < taxInfo.length; i++) {
+            taxInfo[i].style.display = isVisible ? "none" : "inline";
+        }
+
+        mobileFooterTaxBtn.classList.toggle("active", !isVisible);
+    });
+});
+
 </script>
