@@ -50,6 +50,7 @@
 
     <!-- Mobile and Tablet Listings Heading -->
 <div class="mobile-listings-heading">
+    
     <h2>Explore stays around the world</h2>
     <p>Discover unique places and find your next getaway.</p>
 </div>
@@ -79,7 +80,8 @@
 
         <div class="filter <%= category === 'Mountains' ? 'active' : '' %>">
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Mountains">
-            <div><i class="fa-solid fa-mountain"></i></div>
+            
+                <div><i class="fa-solid fa-mountain"></i></div>
             <p>Mountains</p>
             </a>
         </div>
@@ -88,7 +90,8 @@
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Castles">
             
                 <div><i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
+            
+                <p>Castles</p>
             </a>
         </div>
 
@@ -96,7 +99,6 @@
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Amazing%20Pools">
             <div><i class="fa-solid fa-person-swimming"></i></div>
             <p>Amazing Pools</p>
-            
         </a>
         </div>
 
@@ -130,25 +132,26 @@
 
         <div class="filter <%= category === 'Boats' ? 'active' : '' %>">
             <a href="/listings?search=<%= encodeURIComponent(search || '') %>&maxPrice=<%= maxPrice || '' %>&category=Boats">
-            <div><i class="fa-solid fa-ship"></i></div>
+            
+                <div><i class="fa-solid fa-ship"></i></div>
             <p>Boats</p>
+            
+        
             </a>
         </div>
 
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
                 
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
                 <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
             </div>
-        
-        
         </div>
     </div>
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-    <%for (let i=0; i < allListing.length; i++) { %>
-        
+    
+    <%for (let i=0; i < allListing.length; i++) { %>    
         <a href="/listings/<%= allListing[i]._id %>" class="listing-link">
             <div class="card col listing-card">
                 <img src="<%= allListing[i].image.url %>" class="card-img-top" alt="listing_image" style = "height: 20rem">
@@ -156,7 +159,6 @@
                 <div class="card-body">
                     <p class="card-text">
                         <b><%= allListing[i].title %></b> <br>
-
                         &#8377; <%= allListing[i].price.toLocaleString("en-IN") %> / night
                         <i class="tax-info"> &nbsp; &nbsp +18% GST</i>
                     </p>
@@ -187,7 +189,9 @@
             }
         });
         
-    // Mobile and Tablet Footer Tax Button
+    
+    
+        // Mobile and Tablet Footer Tax Button
     const mobileFooterTaxBtn = document.getElementById("mobileFooterTaxBtn");
 
     if (mobileFooterTaxBtn) {
@@ -195,7 +199,7 @@
             const taxInfo = document.getElementsByClassName("tax-info");
             const isVisible = taxInfo.length > 0 &&
                 taxInfo[0].style.display === "inline";
-
+                
             for (let i = 0; i < taxInfo.length; i++) {
                 taxInfo[i].style.display = isVisible ? "none" : "inline";
             }

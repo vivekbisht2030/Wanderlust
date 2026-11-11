@@ -31,13 +31,18 @@ module.exports.createBooking = async (req, res) => {
         return res.redirect("/listings");
     }
 
+
+
     // Prevent booking your own listing
     if (listing.owner.equals(req.user._id)) {
+
+
         req.flash("error", "You cannot book your own listing");
         return res.redirect(`/listings/${id}`);
     }
 
     const startDate = new Date(checkIn);
+
     const endDate = new Date(checkOut);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -45,6 +50,7 @@ module.exports.createBooking = async (req, res) => {
     if (
         isNaN(startDate) ||
         isNaN(endDate) ||
+
         startDate < today ||
         endDate <= startDate
     ) {
@@ -74,6 +80,7 @@ module.exports.createBooking = async (req, res) => {
 
     const nights = Math.ceil(
         (endDate - startDate) / (1000 * 60 * 60 * 24)
+
     );
 
     const pricePerNight = listing.price;
@@ -83,6 +90,7 @@ module.exports.createBooking = async (req, res) => {
         listing: id,
         user: req.user._id,
         checkIn: startDate,
+
         checkOut: endDate,
         guests: guestCount,
         pricePerNight,
@@ -94,7 +102,6 @@ module.exports.createBooking = async (req, res) => {
     req.flash("success", "Your booking is confirmed!");
     res.redirect(`/listings/${id}`);
 };
-
 
 module.exports.updateBooking = async (req, res) => {
     const { id, bookingId } = req.params;
@@ -125,14 +132,17 @@ module.exports.updateBooking = async (req, res) => {
         guestCount > 20
     ) {
         req.flash("error", "Please enter valid booking details");
+        
         return res.redirect(`/listings/${id}`);
     }
 
+    
     const overlappingBooking = await Booking.findOne({
         _id: { $ne: bookingId },
         listing: id,
         status: "Confirmed",
         checkIn: { $lt: endDate },
+        
         checkOut: { $gt: startDate }
     });
 
@@ -170,6 +180,7 @@ module.exports.cancelBooking = async (req, res) => {
     booking.status = "Cancelled";
     await booking.save();
 
+
     req.flash("success", "Booking cancelled successfully");
     res.redirect(`/listings/${id}`);
 };
@@ -178,6 +189,8 @@ module.exports.renderEditBookingForm = async (req, res) => {
     const booking = res.locals.booking;
     const listing = await Listing.findById(req.params.id);
 
+    
+    
     if (!listing) {
         req.flash("error", "Listing not found");
         return res.redirect("/listings");

@@ -31,16 +31,18 @@ module.exports.isOwner = async(req, res, next) => {
     next();
 }
 
+
+
 module.exports.validateListing = (req, res, next) => {
     let {error} = listingSchema.validate(req.body);
 
+
     if(error){
         let errorMsg = error.details.map((el) => el.message).join(",");
-
-
         throw new ExpressError(400, errorMsg);
     } else {
         next();
+    
     }
 };
 
@@ -48,10 +50,10 @@ module.exports.validateReviews = (req, res, next) => {
     let {error} = reviewSchema.validate(req.body);
     if(error){
         let errorMsg = error.details.map((el) => el.message).join(",");
+        
         throw new ExpressError(400, errorMsg);
     } else {
         next();
-
     }
 };
 
@@ -67,22 +69,18 @@ module.exports.isReviewAuthor = async(req, res, next) => {
 
 module.exports.isBookingAuthor = async (req, res, next) => {
     const { bookingId } = req.params;
-
     const booking = await Booking.findById(bookingId);
-
     if (!booking) {
         req.flash("error", "Booking not found");
         return res.redirect("/listings");
     }
 
-    if (
-    !booking.user.equals(req.user._id) ||
-    !booking.listing.equals(req.params.id)
-) {
+    if (!booking.user.equals(req.user._id) || !booking.listing.equals(req.params.id)) {
         req.flash("error", "You can only manage your own bookings");
         return res.redirect(`/listings/${req.params.id}`);
     }
 
+    
     res.locals.booking = booking;
     next();
 };

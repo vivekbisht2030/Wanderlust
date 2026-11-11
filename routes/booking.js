@@ -24,40 +24,27 @@ const bookingController = require("../controllers/booking.js");
 
 // Show booking form
 router.get(
-    "/new",
-    isLoggedIn,
-    wrapAsync(bookingController.renderBookingForm)
+    "/new", isLoggedIn, wrapAsync(bookingController.renderBookingForm)
 );
 
 // Show edit booking page
-router.get(
-    "/:bookingId/edit",
-    isLoggedIn,
-    wrapAsync(isBookingAuthor),
-    wrapAsync(bookingController.renderEditBookingForm)
+router.get("/:bookingId/edit", isLoggedIn, wrapAsync(isBookingAuthor), wrapAsync(bookingController.renderEditBookingForm)
 );
 
 // Create booking
-router.post(
-    "/",
-    isLoggedIn,
-    wrapAsync(bookingController.createBooking)
+
+router.post("/", isLoggedIn, wrapAsync(bookingController.createBooking)
 );
+
 
 // Update booking
-router.put(
-    "/:bookingId",
-    isLoggedIn,
-    wrapAsync(isBookingAuthor),
-    wrapAsync(bookingController.updateBooking)
+router.put("/:bookingId", isLoggedIn, wrapAsync(isBookingAuthor), wrapAsync(bookingController.updateBooking)
 );
 
+
+
 // Cancel booking
-router.delete(
-    "/:bookingId",
-    isLoggedIn,
-    wrapAsync(isBookingAuthor),
-    wrapAsync(bookingController.cancelBooking)
+router.delete("/:bookingId", isLoggedIn, wrapAsync(isBookingAuthor), wrapAsync(bookingController.cancelBooking)
 );
 
 module.exports = router;

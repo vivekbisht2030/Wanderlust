@@ -32,26 +32,27 @@ const cookie = require("express-session/session/cookie.js");
 
 main()
     .then(() => {
+        
         console.log("connection");
-
     }) .catch(err => console.log(err));
-async function main() {
 
 
+    async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
 }
 
+
+
 const sessionOption = {
     secret: "mysupersecretpolu",
-
     resave: false,
     saveUninitialized: true,
     cookie: {
         expires: Date.now() + 7 * 24 * 60 * 60 *1000,
         maxAge: 7 * 24 * 60 * 60 *1000,
+        
         httpOnly: true
     }
-
 };
 
 // app.get("/", (req, res) => {
@@ -79,15 +80,16 @@ app.use((req, res, next) => {
     next();
 });
 
+
 // app.get("/demouser", async (req, res) => {
 //     let fakeUser = new User({
-
 //         email: "polu@gmail.com",
 //         username: "PoluOlu"
 //     });
 //     let registeredUser = await User.register(fakeUser, "Polu@Olu");
 //     res.send(registeredUser);
 // });
+
 
 app.use("/listings", listingRouter); // listing.js (routes)
 app.use("/listings/:id/reviews", reviewRouter); // review.js (routes)

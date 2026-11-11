@@ -132,20 +132,24 @@ a.book-now-btn {
     color: white !important;
     border: none;
     padding: 10px 30px;
+    
     font-weight: 600;
     text-decoration: none;
+    
+    
     border-radius: 8px;
 }
 
 a.book-now-btn:hover {
     background-color: #e63946 !important;
+    
     color: white !important;
 }
-
 
 /* ========================================= */
 /* TABLET AND MOBILE - LISTING CARDS */
 /* ========================================= */
+
 
 @media (max-width: 1199px) {
 
@@ -176,6 +180,7 @@ a.book-now-btn:hover {
         padding: 0 !important;
     }
 
+
     .listing-card .card-title {
         font-size: 13px;
         line-height: 1.4;
@@ -185,6 +190,7 @@ a.book-now-btn:hover {
         font-size: 12px;
         line-height: 1.4;
     }
+
 }
 
 /* heading of home page mobiile and tab */
@@ -226,19 +232,24 @@ a.book-now-btn:hover {
 @media (max-width: 1199px) {
 
     .mobile-sticky-footer {
+        
         display: flex;
         position: fixed;
+        
+        
         bottom: 0;
         left: 0;
         width: 100%;
         height: 65px;
         background-color: #fff;
+        
         border-top: 1px solid #e5e5e5;
         justify-content: space-around;
         align-items: center;
         z-index: 1050;
         padding: 5px 8px;
     }
+
 
     .mobile-sticky-footer a,
     .mobile-sticky-footer button {
@@ -269,6 +280,7 @@ a.book-now-btn:hover {
     body {
         padding-bottom: 70px;
     }
+
 }
 
 
@@ -278,6 +290,7 @@ a.book-now-btn:hover {
     .f-info {
         height: auto;
         min-height: 95px;
+        
         padding: 12px 5px;
         gap: 7px;
         display: flex;
@@ -319,13 +332,17 @@ a.book-now-btn:hover {
         flex: 0 0 100% !important;
         width: 100% !important;
         max-width: 100% !important;
+        
         margin-left: 0 !important;
         padding: 20px 10px;
+        
+        
         box-sizing: border-box;
     }
 
     .new-listing-form h3 {
         white-space: nowrap;
+        
         font-size: 23px;
         margin-bottom: 22px;
     }
@@ -363,6 +380,7 @@ a.book-now-btn:hover {
         flex: 0 0 40%;
         max-width: 40%;
         padding: 0 5px;
+    
     }
 
     .new-listing-form form > .row > .col-md-8 {
@@ -372,8 +390,823 @@ a.book-now-btn:hover {
     }
 }
 
+
 @media (max-width: 576px) {
     .new-listing-form h3 {
         font-size: 22px;
     }
+}
+
+/* ===== LISTING DETAILS - HIDE STICKY FOOTER ON TABLET/MOBILE ===== */
+
+@media (max-width: 1199px) {
+    body:has(.listing-details-page) .mobile-sticky-footer {
+        display: none !important;
+    }
+
+    body:has(.listing-details-page) {
+        padding-bottom: 0 !important;
+    }
+}
+
+
+
+/* ===== LISTING DETAILS - TABLET & MOBILE ONLY ===== */
+
+@media (max-width: 1199px) {
+
+    /* Main page layout */
+    .listing-details-page {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 12px;
+    }
+
+    /* Page title */
+    .listing-details-page > .col-8.offset-3 {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 15px 5px 12px;
+    }
+
+
+
+    .listing-details-page > .col-8.offset-3 h3 {
+        font-size: 23px;
+        
+        
+        line-height: 1.35;
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* Main listing card */
+    .listing-details-page > .show-card {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .listing-details-page .show-img {
+        display: block;
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+    }
+
+    .listing-details-page .show-card .card-body {
+        padding: 16px;
+    }
+
+    .listing-details-page .show-card .card-text {
+        font-size: 15px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+        margin-bottom: 10px;
+    }
+
+    /* Edit and Delete buttons */
+    .listing-details-page > .btns {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 15px 5px;
+        
+        margin: 0;
+    }
+
+    .listing-details-page > .btns .edit-btn,
+    .listing-details-page > .btns form button {
+        width: auto;
+        min-width: 85px;
+        margin: 0;
+        padding: 9px 18px;
+    
+    }
+
+    .listing-details-page > .btns form {
+        margin: 0;
+    }
+
+    /* Booking section */
+    .listing-details-page > .col-8.offset-3.mb-4 {
+        flex: 0 0 100%;
+        
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 10px 5px;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-4 .d-flex {
+        flex-wrap: wrap;
+        gap: 10px !important;
+    }
+
+    /* Review section */
+    .listing-details-page > .col-8.offset-3.mb-3 {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 10px 5px;
+        box-sizing: border-box;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 h4 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    /* Rating and comments spacing */
+    .listing-details-page > .col-8.offset-3.mb-3 form {
+        width: 100%;
+    }
+
+
+    .listing-details-page > .col-8.offset-3.mb-3 form .mb-3 {
+        margin-top: 5px !important;
+        
+        
+        margin-bottom: 5px !important;
+    }
+
+    .listing-details-page .starability-slot {
+        margin: 0 !important;
+        
+        padding: 0 !important;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 form .mb-3:has(.starability-slot) {
+        margin-bottom: 0 !important;
+    }
+
+    
+    .listing-details-page > .col-8.offset-3.mb-3 form .mb-3:has(textarea) {
+        margin-top: 0 !important;
+    }
+
+    /* Comment box */
+    .listing-details-page > .col-8.offset-3.mb-3 textarea {
+        width: 100%;
+        height: 85px;
+        min-height: 85px;
+    }
+
+    /* All Reviews grid */
+    .listing-details-page > .col-8.offset-3.mb-3 > .row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        width: 100%;
+        transform: translateX(-6px);
+        box-sizing: border-box;
+    }
+
+    /* All Reviews heading */
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > p {
+        grid-column: 1 / -1;
+        margin: 0;
+    }
+
+    
+    
+    /* Review cards */
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card {
+        grid-column: auto;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        border-radius: 10px;
+        
+        overflow: visible;
+        box-sizing: border-box;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .card-body {
+        padding: 12px 10px;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .card-title {
+        font-size: 13px;
+        margin-bottom: 8px;
+        padding: 0 2px;
+        overflow-wrap: anywhere;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .starability-result {
+        width: 150px;
+        max-width: none;
+        transform: scale(.72);
+        transform-origin: left center;
+        margin: 5px 0 8px;
+        white-space: nowrap;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .card-text {
+        font-size: 12px;
+        padding: 0 2px;
+        overflow-wrap: anywhere;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card form {
+        padding: 0 10px;
+    }
+
+    /* Map section */
+    .listing-details-page .col-8.offset-3.mb-3 .col-8.offset-3 {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        
+        margin: 0;
+       
+       
+        padding: 10px 0;
+    }
+
+    .listing-details-page #map {
+        width: 100%;
+        height: 180px;
+        
+        border-radius: 12px;
+        overflow: hidden;
+    }
+}
+
+/* ===== MOBILE ONLY ===== */
+
+
+@media (max-width: 576px) {
+    .listing-details-page {
+        padding: 0 8px;
+    }
+
+    .listing-details-page > .col-8.offset-3 {
+        padding: 12px 5px;
+    }
+
+    .listing-details-page > .col-8.offset-3 h3 {
+        font-size: 21px;
+    }
+
+    .listing-details-page .show-img {
+        height: 220px;
+    }
+
+    .listing-details-page .show-card .card-body {
+        padding: 14px;
+    }
+
+    .listing-details-page .show-card .card-text {
+        font-size: 14px;
+    }
+
+    .listing-details-page > .btns {
+        gap: 10px;
+    }
+
+    
+    .listing-details-page > .col-8.offset-3.mb-3 h4 {
+        font-size: 20px;
+    }
+
+    /* Reviews - two cards side by side */
+    .listing-details-page > .col-8.offset-3.mb-3 > .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        transform: translateX(-18px);
+    
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .card-body {
+        padding: 10px 8px;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .card-title {
+        font-size: 12px;
+        padding: 0 2px;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .starability-result {
+        transform: scale(.68);
+        transform-origin: left center;
+        margin: 4px 0 7px;
+    }
+
+    .listing-details-page > .col-8.offset-3.mb-3 > .row > .card .card-text {
+        font-size: 11px;
+    }
+
+    /* Horizontal map */
+    .listing-details-page #map {
+        height: 170px;
+    }
+}
+
+
+/* ===== EDIT LISTING - TABLET & MOBILE ONLY ===== */
+
+@media (max-width: 1199px) {
+
+    /* Hide sticky footer only on Edit Listing page */
+    body:has(.edit-listing-page) .mobile-sticky-footer {
+        display: none !important;
+    }
+
+    body:has(.edit-listing-page) {
+        padding-bottom: 0 !important;
+    }
+
+
+    /* Wider form container */
+    .edit-listing-page {
+        
+        
+        margin: 0 !important;
+        padding: 0 12px;
+    }
+
+    .edit-listing-form {
+        
+        flex: 0 0 100%;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 15px 8px !important;
+        width: 100% !important;
+    }
+
+
+    /* Heading */
+    .edit-listing-form h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 22px;
+    }
+
+    /* Form fields */
+    .edit-listing-form .form-label {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .edit-listing-form form,
+    .edit-listing-form .form-control,
+    .edit-listing-form .form-select {
+        width: 100% !important;
+    }
+
+    .edit-listing-form .form-control,
+    .edit-listing-form .form-select {
+        min-height: 46px;
+        font-size: 15px;
+        border-radius: 9px;
+        padding: 10px 13px;
+    }
+
+    
+    
+    .edit-listing-form textarea.form-control {
+        min-height: 95px;
+    }
+
+    /* Original listing image */
+    .edit-listing-form img {
+        display: block;
+        width: 130px;
+        height: 95px;
+        
+        object-fit: cover;
+        border-radius: 9px;
+        margin-top: 8px;
+    }
+
+    /* Price and Country in the same row */
+    .edit-listing-form form > .row {
+        display: flex;
+        flex-wrap: nowrap;
+        
+        gap: 12px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .edit-listing-form form > .row > .col-md-4 {
+        flex: 0 0 35%;
+        max-width: 35%;
+        padding: 0;
+    }
+
+    .edit-listing-form form > .row > .col-md-8 {
+        flex: 1 1 65%;
+        max-width: 65%;
+        padding: 0;
+    }
+
+    /* Upload image field */
+    .edit-listing-form input[type="file"] {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /* Edit button */
+    .edit-listing-form .edit-btn {
+        min-width: 100px;
+        padding: 10px 25px;
+        border-radius: 9px;
+        
+        font-size: 15px;
+    }
+}
+
+/* ===== MOBILE ONLY ===== */
+
+@media (max-width: 576px) {
+
+    .edit-listing-page {
+        padding: 0 8px;
+    }
+
+    .edit-listing-form {
+        padding: 14px 8px;
+    }
+
+    .edit-listing-form h3 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .edit-listing-form .form-control,
+    .edit-listing-form .form-select {
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    .edit-listing-form textarea.form-control {
+        min-height: 85px;
+    }
+
+    /* Slightly smaller original image */
+    .edit-listing-form img {
+        width: 115px;
+        height: 85px;
+    }
+
+    
+    /* Keep Price and Country side by side */
+    .edit-listing-form form > .row {
+        gap: 9px;
+    }
+
+    .edit-listing-form form > .row > .col-md-4 {
+        flex: 0 0 36%;
+        max-width: 36%;
+    }
+
+    .edit-listing-form form > .row > .col-md-8 {
+        flex: 1 1 64%;
+        max-width: 64%;
+    }
+}
+
+/* ===== BOOKING PAGE - TABLET & MOBILE ONLY ===== */
+
+@media (max-width: 1199px) {
+
+    /* Hide sticky footer only on booking page */
+    body:has(.booking-page) .mobile-sticky-footer {
+        display: none !important;
+    }
+
+    body:has(.booking-page) {
+        padding-bottom: 0 !important;
+    }
+
+    /* Main booking layout */
+    .booking-page {
+        margin: 15px 0 25px !important;
+        padding: 0 14px;
+    }
+
+    .booking-page > .col-8.offset-2 {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding: 0;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .booking-page h2 {
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+
+    /* Booking card */
+    .booking-page .booking-card {
+        width: 100%;
+        padding: 20px !important;
+        border: 1px solid #e5e5e5;
+        border-radius: 15px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.05);
+    
+    }
+
+    .booking-page .booking-image {
+        width: 100%;
+        height: 155px !important;
+        object-fit: cover;
+        border-radius: 11px;
+    }
+
+    .booking-page .booking-card h4 {
+        font-size: 20px;
+        font-weight: 650;
+    }
+
+    .booking-page .booking-card p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+    }
+
+    .booking-page .booking-card hr {
+        margin: 15px 0;
+    }
+
+    /* Form fields */
+    .booking-page .form-label {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    
+    }
+
+    .booking-page .form-control {
+        width: 100%;
+        min-height: 44px;
+        border-radius: 9px;
+        font-size: 14px;
+    }
+
+
+    .booking-page .mb-3 {
+        margin-bottom: 14px !important;
+    }
+
+    /* Total price and buttons */
+    .booking-page .booking-total {
+        font-size: 19px;
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    .booking-page .booking-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .booking-page .booking-actions .btn {
+        margin: 0 !important;
+        min-height: 43px;
+        padding: 9px 17px;
+        border-radius: 9px;
+        font-size: 14px;
+    }
+}
+
+/* ===== MOBILE ONLY ===== */
+
+@media (max-width: 576px) {
+
+    .booking-page {
+        padding: 0 10px;
+        margin-top: 12px !important;
+    }
+
+    .booking-page h2 {
+        font-size: 23px;
+    }
+
+    .booking-page .booking-card {
+        
+        padding: 16px !important;
+        border-radius: 13px;
+    
+    
+    }
+
+    .booking-page .booking-image {
+        height: 135px !important;
+    }
+
+    .booking-page .booking-card h4 {
+        font-size: 18px;
+    }
+
+    .booking-page .booking-card p {
+        font-size: 13px;
+    }
+
+    .booking-page .booking-total {
+        font-size: 18px;
+    }
+
+    .booking-page .booking-actions .btn {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+
+/* ===== FLASH MESSAGES - TABLET & MOBILE ONLY ===== */
+
+@media (max-width: 1199px) {
+
+    .alert.alert-success,
+    .alert.alert-danger {
+        flex: 0 0 calc(100% - 24px);
+        width: calc(100% - 24px);
+        max-width: 600px;
+        margin: 12px auto !important;
+        padding: 14px 42px 14px 16px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 500;
+        box-sizing: border-box;
+        position: relative;
+        overflow-wrap: anywhere;
+        
+        box-shadow: 0 2px 9px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Success message */
+    .alert.alert-success {
+        background-color: #eaf7ef;
+        border: 1px solid #b9e3c8;
+        color: #216b3a;
+    }
+
+    /* Error message */
+    .alert.alert-danger {
+        background-color: #fff0f0;
+        border: 1px solid #f1c1c1;
+        color: #a52a2a;
+    }
+
+    /* Close button */
+    .alert.alert-success .btn-close,
+    .alert.alert-danger .btn-close {
+        position: absolute !important;
+        top: 50% !important;
+        right: 10px !important;
+        bottom: auto !important;
+        transform: translateY(-50%) !important;
+        margin: 0 !important;
+        padding: 7px !important;
+        opacity: 0.65;
+    }
+
+    .alert .btn-close:hover {
+        opacity: 1;
+    }
+}
+
+/* ===== MOBILE ONLY ===== */
+
+@media (max-width: 576px) {
+
+    .alert.alert-success,
+    .alert.alert-danger {
+        flex-basis: calc(100% - 20px);
+        width: calc(100% - 20px);
+        margin: 10px auto !important;
+        padding: 12px 38px 12px 13px;
+        font-size: 13px;
+        border-radius: 10px;
+    }
+}
+
+/* ===== CENTER STICKY FOOTER ITEMS ON TABLETS ONLY ===== */
+
+@media (min-width: 577px) and (max-width: 1199px) {
+    .mobile-sticky-footer {
+        
+        
+        justify-content: center !important;
+        gap: 55px;
+    }
+
+    
+    
+    .mobile-sticky-footer a,
+    .mobile-sticky-footer button {
+        flex: 0 0 120px;
+    }
+}
+
+
+
+/* ===== TABLET NAVBAR ONLY ===== */
+@media (min-width: 605px) and (max-width: 1199px) {
+
+    .mobile-navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    /* Hide mobile search button */
+    .mobile-search-trigger {
+        display: none !important;
+    }
+
+    /* Show laptop-style search form */
+    .tablet-search-form {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 55%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .tablet-search-form input[type="search"] {
+    flex: 1;
+    min-width: 0;
+    
+    height: 42px;
+    padding: 0 12px !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+    direction: ltr;
+}
+
+.tablet-search-form input[type="search"]::placeholder {
+    text-align: center !important;
+    
+    opacity: 1;
+}
+
+    .tablet-search-form .search-btn {
+        flex-shrink: 0;
+        height: 42px;
+    }
+
+    /* Keep account icon at the right */
+    .mobile-user-menu {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}
+
+/* Hide tablet search on mobile */
+.tablet-search-form {
+    display: none;
 }

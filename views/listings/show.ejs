@@ -3,7 +3,7 @@
     const mapToken = "<%= mapToken %>";
     const listing = <%- JSON.stringify(listing) %>;
 </script>
-<div class="row">
+<div class="row listing-details-page">
     <div class="col-8 offset-3">
         <br> <br>
         <h3><b> <%= listing.title %> </b></h3>
@@ -35,6 +35,8 @@
 
 <!-- Booking Buttons -->
 <% if (!currUser || !listing.owner._id.equals(currUser._id)) { %>
+    
+    
     <div class="col-8 offset-3 mb-4 mt-3">
 
         <% if (booking) { %>
@@ -48,6 +50,7 @@
                         class="btn"
                         style="background-color: #fe424d; color: white;">
                         Cancel Booking
+                    
                     </button>
                 </form>
 
@@ -65,9 +68,7 @@
                class="btn book-now-btn">
                 Book Now
             </a>
-
         <% } %>
-
     </div>
 <% } %>
 
@@ -76,10 +77,10 @@
         <% if(currUser) { %>
             <hr>
 
-
         <h4>Write a Review</h4>
         <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate class="needs-validation">
             <div class="mb-3 mt-3">
+                
                 <label for="rating" class="form-label">Rating</label>
                 <fieldset class="starability-slot">
 
@@ -89,8 +90,8 @@
                     <input type="radio" id="first-rate2" name="review[rating]" value="2" />
                     <label for="first-rate2" title="Not good">2 stars</label>
                     <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                    
                     <label for="first-rate3" title="Average">3 stars</label>
-
                     <input type="radio" id="first-rate4" name="review[rating]" value="4" />
                     <label for="first-rate4" title="Very good">4 stars</label>
                     <input type="radio" id="first-rate5" name="review[rating]" value="5" />
@@ -130,10 +131,12 @@
 
         <div class="col-8 offset-3 mb-3">
             <h3>Where you'll be</h3>
-
             <div id="map"></div>
+        
         </div>
     </div>
+
+
 </div>
 
 <script src="/js/map.js"></script>

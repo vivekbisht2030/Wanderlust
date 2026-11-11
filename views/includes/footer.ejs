@@ -20,10 +20,7 @@
 </footer>
 
 
-<!-- ===================================== -->
 <!-- MOBILE AND TABLET STYLING -->
-<!-- ===================================== -->
-
 <style>
 @media (max-width: 1199px) {
 
@@ -35,14 +32,17 @@
     left: 0;
     right: 0;
     height: auto;
+    
     z-index: 1055;
     background: transparent;
+    
     overflow: visible;
-}
+    }
 
     /* Remove dark backdrop */
     body:has(#mobileCategoriesModal.show) .modal-backdrop {
         opacity: 0 !important;
+    
     }
 
     #mobileCategoriesModal .modal-dialog-bottom {
@@ -50,6 +50,7 @@
         inset: 0;
         width: 100%;
         max-width: 100%;
+        
         height: 100%;
         margin: 0;
     }
@@ -77,6 +78,9 @@
         font-weight: 600;
     }
 
+
+
+
     /* Categories grid */
     .mobile-categories-grid {
         display: grid;
@@ -86,6 +90,7 @@
 
     .mobile-category-item {
         min-height: 82px;
+        
         border: none;
         border-radius: 15px;
         display: flex;
@@ -111,13 +116,15 @@
     .mobile-category-item.selected {
     background: transparent;
     color: #222;
-}
-.mobile-category-item.selected i {
+    }
+    
+    .mobile-category-item.selected i {
         color: #000;
     }
-.mobile-category-item:not(.selected) i {
+    
+    .mobile-category-item:not(.selected) i {
     color: #b5b5b5;
-}
+    }
 
     /* Sticky footer remains visible */
     .mobile-sticky-footer {
@@ -126,149 +133,87 @@
 }
 </style>
 
-
-<!-- ===================================== -->
 <!-- MOBILE AND TABLET STICKY NAVIGATION -->
-<!-- ===================================== -->
+
+
 
 <div class="mobile-sticky-footer">
-
     <% if (typeof search !== "undefined" && search) { %>
-
-        <button type="button"
-                id="mobilePriceFilterBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#mobilePriceFilterModal">
-
+        <button type="button" id="mobilePriceFilterBtn" data-bs-toggle="modal" data-bs-target="#mobilePriceFilterModal">
             <i class="fa-solid fa-sliders"></i>
             <span>Price</span>
-
+        
         </button>
-
     <% } %>
 
-    <a href="/listings/new">
-        <i class="fa-solid fa-house-user"></i>
-        <span>List Your Stay</span>
-    </a>
+    <a href="/listings/new"><i class="fa-solid fa-house-user"></i><span>List Your Stay</span></a>
 
-    <button type="button"
-            id="mobileCategoriesBtn"
-            data-bs-toggle="modal"
-            data-bs-target="#mobileCategoriesModal">
-
+    <button type="button" id="mobileCategoriesBtn" data-bs-toggle="modal" data-bs-target="#mobileCategoriesModal">
         <i class="fa-solid fa-shapes"></i>
+        
         <span>Categories</span>
-
     </button>
 
-    <button type="button" id="mobileFooterTaxBtn">
-        <i class="fa-solid fa-receipt"></i>
-        <span>Included Taxes</span>
-    </button>
-
+    <button type="button" id="mobileFooterTaxBtn"> <i class="fa-solid fa-receipt"></i> <span>Included Taxes</span></button>
 </div>
 
-
-<!-- ===================================== -->
 <!-- MOBILE AND TABLET PRICE FILTER -->
-<!-- ===================================== -->
 
-<div class="modal fade"
-     id="mobilePriceFilterModal"
-     tabindex="-1"
-     aria-hidden="true">
+<div class="modal fade" id="mobilePriceFilterModal" tabindex="-1" aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered">
-
-        <div class="modal-content"
-             style="border-radius:20px; padding:15px;">
+        <div class="modal-content" style="border-radius:20px; padding:15px;">
 
             <div class="modal-header border-0">
                 <h5 class="modal-title">Price per night</h5>
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal">
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
                 </button>
             </div>
 
             <div class="modal-body">
-
                 <form action="/listings" method="GET">
-
-                    <input type="hidden"
-                           name="search"
-                           value="<%= typeof search !== 'undefined' ? search : '' %>">
+                    <input type="hidden" name="search" value="<%= typeof search !== 'undefined' ? search : '' %>">
 
                     <% if (typeof category !== 'undefined' && category) { %>
-                        <input type="hidden"
-                               name="category"
-                               value="<%= category %>">
+                        <input type="hidden" name="category" value="<%= category %>">
                     <% } %>
 
                     <div class="d-flex justify-content-between">
                         <span>₹1,000</span>
+                        
                         <span>₹15,000</span>
                     </div>
 
-                    <input type="range"
-                           class="form-range"
-                           name="maxPrice"
-                           min="1000"
-                           max="15000"
-                           step="100"
-                           value="<%= typeof maxPrice !== 'undefined' && maxPrice ? maxPrice : 15000 %>"
-                           id="mobileMaxPrice">
+                    <input type="range" class="form-range" name="maxPrice" min="1000" max="15000" step="100"
+                           value="<%= typeof maxPrice !== 'undefined' && maxPrice ? maxPrice : 15000 %>" id="mobileMaxPrice">
 
                     <h4 class="text-center" id="mobilePriceValue">
                         ₹<%= Number(typeof maxPrice !== 'undefined' && maxPrice ? maxPrice : 15000).toLocaleString("en-IN") %>
                     </h4>
 
-                    <button type="submit"
-                            class="btn w-100"
-                            style="background:#fe424d;color:white;border-radius:10px;">
-
+                    <button type="submit" class="btn w-100" style="background:#fe424d;color:white;border-radius:10px;">
                         Apply Filter
-
                     </button>
-
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- ===================================== -->
 <!-- MOBILE AND TABLET CATEGORIES -->
-<!-- ===================================== -->
 
-<div class="modal fade"
-     id="mobileCategoriesModal"
-     tabindex="-1"
-     aria-hidden="true">
-
+<div class="modal fade" id="mobileCategoriesModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-bottom">
-
         <div class="modal-content mobile-categories-content">
-
             <div class="mobile-categories-header">
-
                 <h5>Explore categories</h5>
 
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal">
-                </button>
-
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <div class="mobile-categories-grid">
 
-                <%
-                const mobileCategories = [
+                <%  const mobileCategories = [
                     ["Trending", "fa-fire"],
                     ["Rooms", "fa-bed"],
                     ["Iconic Cities", "fa-city"],
@@ -280,58 +225,42 @@
                     ["Arctic", "fa-snowflake"],
                     ["Domes", "fa-landmark"],
                     ["Boats", "fa-ship"]
-                ];
-                %>
+                ]; %>
 
                 <% mobileCategories.forEach(([name, icon]) => { %>
-
                     <a
                         href="/listings?search=<%= typeof search !== 'undefined' ? encodeURIComponent(search || '') : '' %>&maxPrice=<%= typeof maxPrice !== 'undefined' ? maxPrice || '' : '' %>&category=<%= encodeURIComponent(name) %>"
-                        class="mobile-category-item <%= typeof category !== 'undefined' && category === name ? 'selected' : '' %>"
-                    >
-
-                        <i class="fa-solid <%= icon %>"
-                           aria-hidden="true"></i>
-
+                        class="mobile-category-item <%= typeof category !== 'undefined' && category === name ? 'selected' : '' %>">
+                        <i class="fa-solid <%= icon %>"aria-hidden="true"></i>
+                        
                         <span><%= name %></span>
-
                     </a>
-
-                <% }) %>
-
+                
+                
+                    <% }) %>
             </div>
-
         </div>
     </div>
 </div>
 
-
-<!-- ===================================== -->
 <!-- MOBILE PRICE SLIDER JAVASCRIPT -->
-<!-- ===================================== -->
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
     const mobileMaxPrice =
         document.getElementById("mobileMaxPrice");
+
 
     const mobilePriceValue =
         document.getElementById("mobilePriceValue");
 
     if (mobileMaxPrice && mobilePriceValue) {
-
         mobileMaxPrice.addEventListener("input", () => {
-
             const price = Number(
                 mobileMaxPrice.value
             ).toLocaleString("en-IN");
-
             mobilePriceValue.textContent = `₹${price}`;
-
         });
-
     }
-
 });
 </script>

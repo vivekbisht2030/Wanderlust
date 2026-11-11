@@ -135,11 +135,14 @@
   
   background-position: 0 30px;
   pointer-events: none;
+  
+  
   opacity: 0;
 }
 
 .starability-slot > label:nth-of-type(5)::before {
   width: 120px;
+  
   left: -120px;
 }
 
@@ -150,7 +153,6 @@
 
 .starability-slot > label:nth-of-type(3)::before {
   width: 60px;
-
   left: -60px;
 }
 
@@ -178,6 +180,7 @@
 
   .starability-slot > input {
     position: static;
+    
     margin-right: 0;
     opacity: 1;
 
@@ -185,12 +188,12 @@
   .starability-slot .input-no-rate {
     display: none;
   }
+
   .starability-slot > label {
 
     display: inline;
     float: none;
     width: auto;
-
     height: auto;
     font-size: 1em;
     color: inherit;

@@ -1,7 +1,7 @@
 
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-5">
+<div class="row mt-5 booking-page">
     <div class="col-8 offset-2">
         <h2>Edit Your Booking</h2>
         <hr>
@@ -9,89 +9,53 @@
         <div class="card p-4">
             <h4><%= listing.title %></h4>
 
-            <img
-                src="<%= listing.image.url %>"
-                class="card-img-top mb-3"
-                style="height: 250px; object-fit: cover;"
-                alt="Listing image"
-            >
+            <img src="<%= listing.image.url %>" class="card-img-top mb-3" style="height: 250px; object-fit: cover;"
+                alt="Listing image">
 
             <p><b>Location:</b> <%= listing.location %>, <%= listing.country %></p>
             <p><b>Price per night:</b> ₹<%= booking.pricePerNight.toLocaleString("en-IN") %></p>
-
             <hr>
 
             <form
-                action="/listings/<%= listing._id %>/bookings/<%= booking._id %>?_method=PUT"
-                method="POST"
+                action="/listings/<%= listing._id %>/bookings/<%= booking._id %>?_method=PUT" method="POST"
             >
                 <div class="mb-3">
                     <label class="form-label">Check-in Date</label>
-                    <input
-                        type="date"
-                        id="checkIn"
-                        name="booking[checkIn]"
-                        class="form-control"
-                        value="<%= booking.checkIn.toISOString().split('T')[0] %>"
-                        required
-                    >
+                    <input type="date" id="checkIn" name="booking[checkIn]" class="form-control"
+                        value="<%= booking.checkIn.toISOString().split('T')[0] %>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Check-out Date</label>
-                    <input
-                        type="date"
-                        id="checkOut"
-                        name="booking[checkOut]"
-                        class="form-control"
-                        value="<%= booking.checkOut.toISOString().split('T')[0] %>"
-                        required
-                    >
+                    <input type="date" id="checkOut" name="booking[checkOut]" class="form-control"
+                        value="<%= booking.checkOut.toISOString().split('T')[0] %>" required>
                 </div>
 
                 <div class="mb-3">
+                    
                     <label class="form-label">Number of Guests</label>
-                    <input
-                        type="number"
-                        name="booking[guests]"
-                        class="form-control"
-                        min="1"
-                        max="20"
-                        value="<%= booking.guests %>"
-                        required
-                    >
+                    <input type="number" name="booking[guests]" class="form-control" min="1" max="20"
+                   
+                   
+                    value="<%= booking.guests %>" required>
                 </div>
-
                 <hr>
 
-                <h5>
-                    Total Price: ₹<span id="totalPrice">
-                        <%= booking.totalPrice.toLocaleString("en-IN") %>
-                    </span>
-                </h5>
+                <h5>Total Price: ₹<span id="totalPrice"><%= booking.totalPrice.toLocaleString("en-IN") %></span></h5>
 
-                <button type="submit" class="btn btn-dark mt-3">
-                    Update Booking
-                </button>
-
-                <a
-                    href="/listings/<%= listing._id %>"
-                    class="btn btn-outline-secondary mt-3"
-                >
-                    Go Back
-                </a>
+                <button type="submit" class="btn btn-dark mt-3">Update Booking</button>
+                <a href="/listings/<%= listing._id %>" class="btn btn-outline-secondary mt-3">Go Back</a>
             </form>
         </div>
     </div>
 </div>
 
+
 <script>
     const pricePerNight = <%= booking.pricePerNight %>;
-
     const checkIn = document.getElementById("checkIn");
     const checkOut = document.getElementById("checkOut");
     const totalPrice = document.getElementById("totalPrice");
-
     const today = new Date().toISOString().split("T")[0];
 
     checkIn.min = today;
@@ -99,7 +63,7 @@
 
     function calculateTotal() {
         checkOut.min = checkIn.value || today;
-
+        
         if (!checkIn.value || !checkOut.value) {
             totalPrice.innerText = "0";
             return;

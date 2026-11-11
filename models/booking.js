@@ -32,13 +32,17 @@ const bookingSchema = new mongoose.Schema({
 
     guests: {
         type: Number,
+        
         required: true,
         min: 1
+    
+    
     },
 
     pricePerNight: {
         type: Number,
         required: true
+    
     },
 
     totalPrice: {
@@ -46,6 +50,7 @@ const bookingSchema = new mongoose.Schema({
         required: true
     },
 
+    
     status: {
         type: String,
         enum: ["Confirmed", "Cancelled"],

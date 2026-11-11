@@ -71,10 +71,7 @@
     position: absolute;
 }
   
-
-/* ========================================= */
 /* TABLET AND MOBILE NAVBAR - HOME SCREEN */
-/* ========================================= */
 
 .mobile-tablet-navbar {
     display: none;
@@ -83,6 +80,7 @@
 @media (max-width: 1199px) {
 
     nav.navbar.navbar-expand-md {
+        
         display: none !important;
     }
 
@@ -92,6 +90,7 @@
         top: 0;
         z-index: 1020;
         background-color: white;
+        
         padding: 12px 15px;
     }
 
@@ -133,11 +132,16 @@
         text-align: center;
     }
 
+
     /* User account icon */
+
+
 
     .mobile-user-menu {
         flex-shrink: 0;
     }
+
+
 
     .mobile-user-btn {
         background: white;
@@ -175,6 +179,8 @@
         padding-bottom: 4px;
     }
 
+
+
     .mobile-search-modal .modal-body {
         padding-top: 4px;
     }
@@ -184,6 +190,7 @@
         border: 1px solid #999;
         border-radius: 12px;
         padding: 10px 14px;
+        
         font-size: 15px;
     }
 
@@ -207,9 +214,7 @@
     }
 }
 
-/* ========================================= */
 /* HIDE CATEGORIES AND TAX TOGGLE ON MOBILE/TABLET */
-/* ========================================= */
 
 @media (max-width: 1199px) {
     #filters {
@@ -227,30 +232,27 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
+        
+        
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-
                 <a class="nav-link" href="/listings">Explore</a>
             </div>
 
-            <div class="navbar-nav ms-auto">
-
+<div class="navbar-nav ms-auto">
 <form class="d-flex align-items-center" role="search" action="/listings" method="GET">
     <% if (typeof search !== 'undefined' && search) { %>
     <div class="position-relative me-2">
 
+        <button type="button" class="btn" id="filterBtn"><i class="fa-solid fa-sliders"></i></button>
 
-        <button type="button" class="btn" id="filterBtn">
-            <i class="fa-solid fa-sliders"></i>
-        </button>
 
         <div id="priceFilter" class="d-none">
-            <button type="button" id="closePriceFilter">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <button type="button" id="closePriceFilter"><i class="fa-solid fa-xmark"></i></button>
             <h5>Price per night</h5>
 
             <div class="d-flex justify-content-between mt-3">
@@ -258,50 +260,26 @@
                 <span>₹15,000</span>
             </div>
 
-            <h3 id="priceValue">
-                ₹<%= Number(maxPrice || 15000).toLocaleString("en-IN") %>
-            </h3>
+            <h3 id="priceValue">₹<%= Number(maxPrice || 15000).toLocaleString("en-IN") %></h3>
 
-            <input
-            type="range"
-            id="maxPrice"
-            name="maxPrice"
-            min="1000"
-            max="15000"
-            step="100"
-            value="<%= maxPrice || 15000 %>"
-            >
+            <input type="range" id="maxPrice" name="maxPrice" min="1000" max="15000" step="100" value="<%= maxPrice || 15000 %>">
             <hr>
 
-            <button type="submit" class="btn search-btn w-100">
-                Apply filter
-            </button>
+            <button type="submit" class="btn search-btn w-100">Apply filter</button>
 
             <p class="text-center mt-3" id="priceDescription">
             Showing listings priced at or below ₹<%= Number(maxPrice || 15000).toLocaleString("en-IN") %> per night
             </p>
-
         </div>
     </div>
     <% } %>
 
-    <input
-        class="form-control me-2 search-inp"
-        
-        
-        type="search"
-        name="search"
-        placeholder="Search destinations"
-        value="<%= typeof search !== 'undefined' ? search : '' %>"
-    />
+    <input class="form-control me-2 search-inp" type="search" name="search" placeholder="Search destinations"
+           value="<%= typeof search !== 'undefined' ? search : '' %>"/>
 
-    <button class="btn search-btn" type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>Search
-    </button>
-
+    <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
 </form>
-            </div>
-
+</div>
 
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/listings/new">Wanderlust your home</a>
@@ -312,39 +290,38 @@
                 <% } %>
                 <% if(currUser) { %>
                 <a class="nav-link" href="/logout"><b>Logout</b></a>
+                
                 <% } %>
             </div>
         </div>
     </div>
 </nav>
 
-
-
-<!-- ========================================= -->
 <!-- TABLET AND MOBILE NAVBAR - HOME SCREEN -->
-<!-- ========================================= -->
 
 <nav class="mobile-tablet-navbar">
     <div class="mobile-navbar-container">
 
         <!-- Compass Logo -->
-        <a href="/listings" class="mobile-compass">
-            <i class="fa-regular fa-compass"></i>
-        </a>
+        <a href="/listings" class="mobile-compass"> <i class="fa-regular fa-compass"></i></a>
+        <span class="tablet-explore-label"><b>Explore</b></span>
 
         <!-- Search Bar -->
-        <button type="button" class="mobile-search-trigger"
-        data-bs-toggle="modal"
-        data-bs-target="#mobileSearchModal">
-    <span><%= (typeof search !== 'undefined' && search) ? search : 'Start your search' %></span>
-</button>
+        <button type="button" class="mobile-search-trigger" data-bs-toggle="modal" data-bs-target="#mobileSearchModal">
+        <span><%= (typeof search !== 'undefined' && search) ? search : 'Start your search' %></span>
+        </button>
+
+<!-- TABLET SEARCH BAR -->
+<form class="tablet-search-form" action="/listings" method="GET">
+    <input class="form-control search-inp" type="search" name="search" placeholder="Search destinations"
+        value="<%= typeof search !== 'undefined' ? search : '' %>">
+
+    <button class="btn search-btn" type="submit"> <i class="fa-solid fa-magnifying-glass"></i> Search</button>
+</form>
 
         <!-- User Account Dropdown -->
         <div class="dropdown mobile-user-menu">
-            <button class="mobile-user-btn"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
+            <button class="mobile-user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-user-plus"></i>
             </button>
 
@@ -355,47 +332,37 @@
                 <% } else { %>
                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 <% } %>
+            
             </ul>
         </div>
-
+    
+    
     </div>
 </nav>
 
 <!-- Mobile and Tablet Search Popup -->
 <div class="modal fade" id="mobileSearchModal" tabindex="-1"
+    
      aria-labelledby="mobileSearchModalLabel" aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content mobile-search-modal">
 
             <div class="modal-header border-0">
-                <h5 class="modal-title" id="mobileSearchModalLabel">
-                    Where to?
-                </h5>
-                <button type="button" class="btn-close"
-                        data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="mobileSearchModalLabel"> Where to?</h5>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body">
                 <form action="/listings" method="GET">
 
-                    <input
-                        type="search"
-                        name="search"
-                        class="form-control mobile-destination-input"
-                        placeholder="Search destinations"
-                        required
-                        autofocus
-                    >
+                    <input type="search" name="search" class="form-control mobile-destination-input"
+                        placeholder="Search destinations" required autofocus>
 
-                    <button type="submit"
-                            class="btn mobile-destination-search-btn">
-                        Search
-                    </button>
-
+                    <button type="submit" class="btn mobile-destination-search-btn">Search</button>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
@@ -413,16 +380,17 @@
             priceFilter.classList.toggle("d-none");
         });
     }
-
+    
+    // mobile and tablet
     if (maxPrice) {
-        maxPrice.addEventListener("input", () => {
-            
+        maxPrice.addEventListener("input", () => { 
             const price = Number(maxPrice.value).toLocaleString("en-IN");
             priceValue.textContent = `₹${price}`;
             priceDescription.textContent =
                 `Showing listings priced at or below ₹${price} per night`;
         });
     }
+    
     document.getElementById("closePriceFilter").addEventListener("click", () => {
     document.getElementById("priceFilter").classList.add("d-none");
     });
